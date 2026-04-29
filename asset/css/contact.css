@@ -1,0 +1,100 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #74acdf 0%,
+        #74acdf 33%,
+        #ffffff 33%,
+        #ffffff 66%,
+        #74acdf 66%,
+        #74acdf 100%
+    );
+    text-align: center;
+}
+
+/* CONTAINER */
+.container {
+    width: 70%;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* TITLE */
+h1 {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+}
+
+/* FOTO */
+.profile-img {
+    width: 150px;
+    border-radius: 50%;
+    border: 4px solid #74acdf;
+    margin-bottom: 15px;
+}
+
+/* INFO */
+.info p {
+    margin: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* SOCIAL MEDIA */
+.social {
+    margin: 20px 0;
+}
+
+.social a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #74acdf;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.social a:hover {
+    background: #1e3a8a;
+}
+
+/* FORM */
+form {
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 20px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #74acdf;
+}

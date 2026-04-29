@@ -1,0 +1,36 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(to bottom,#74acdf 33%,white 33%,white 66%,#74acdf 66%);
+    text-align: center;
+}
+
+h1 {
+    background-color: #74acdf;
+    color: white;
+    padding: 15px;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.navbar a {
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+button {
+    padding: 10px;
+    background-color: #74acdf;
+    color: white;
+    border: none;
+}

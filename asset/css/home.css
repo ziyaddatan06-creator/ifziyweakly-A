@@ -1,0 +1,47 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(
+        to bottom,
+        #74acdf 0%,
+        #74acdf 33%,
+        #ffffff 33%,
+        #ffffff 66%,
+        #74acdf 66%,
+        #74acdf 100%
+    );
+    text-align: center;
+}
+
+h1 {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px;
+}
+
+.navbar {
+    margin: 10px;
+}
+
+.navbar a {
+    margin: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+
+.navbar a:hover {
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.container {
+    background: white;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+img {
+    border-radius: 10px;
+    margin: 15px 0;
+}
