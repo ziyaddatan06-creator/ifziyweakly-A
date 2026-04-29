@@ -1,0 +1,33 @@
+body {
+    font-family: Arial;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+}
+
+.site-header {
+    border-bottom: 2px solid #eee;
+    margin-bottom: 30px;
+}
+
+.site-title {
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.site-nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: gray;
+}
+
+.site-nav a.active {
+    color: black;
+    border-bottom: 2px solid black;
+}
