@@ -1,39 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFORMATIKA KELAS A</title>
+    <title>Lionel Messi</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+
+            /* BACKGROUND BENDERA ARGENTINA */
+            background: linear-gradient(
+                to bottom,
+                #74acdf 0%,
+                #74acdf 33%,
+                #ffffff 33%,
+                #ffffff 66%,
+                #74acdf 66%,
+                #74acdf 100%
+            );
+        }
+
+        h1 {
+            background-color: rgba(30, 58, 138, 0.9);
+            color: white;
+            padding: 15px;
+            margin: 0;
+        }
+
+        table {
+            margin: 10px auto;
+            background: white;
+            border-radius: 5px;
+        }
+
+        td {
+            padding: 10px 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        img {
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .club-name {
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #1e3a8a;
+        }
+
+        ul {
+            text-align: left;
+            display: inline-block;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>WEB INFORMATIKA</h1>
-    <table border="black"><tr>
-        <td>
-            <a href="home.html">home</a>
-        </td>
-        <td>
-            <a href="profile.html">profile</a>
-        </td>
-        <td>
-            <a href="contact.html">contact</a>
-        </td>
-    </tr></table>
-    <hr>
-    <h2>Sambutan Kaprodi</h2>
-    <img src="images/OIP.jpg" alt="kaprodi"/>
-    <p>
-        Nama : Samp Jhon, Phd. <br>
-        Jabatan : <b> Kang Parkir </b> <br>
-        Sambutan : Good Game <br>
-    </p>
-    <h3>daftar publikasi</h3>
-    <ul>
-        <li>Scopus</li>
+
+    <h1>LIONEL MESSI</h1>
+
+    <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+            <td><a href="index.html">Home</a></td>
+            <td><a href="profile.html">Profile</a></td>
+            <td><a href="contact.html">Contact</a></td>
+            <td><a href="Statistik.html">Statistik</a></td>
+        </tr>
+    </table>
+
+    <div class="container">
+
+        <!-- FOTO -->
+        <figure>
+            <img src="images/asset/messi1.jpg" width="500px" alt="Lionel Messi">
+            <figcaption>Lionel Messi saat bermain untuk Barcelona</figcaption>
+        </figure>
+
+        <!-- BIODATA -->
+        <p>
+            Lionel Andrés Messi adalah pemain sepak bola profesional asal Argentina 
+            yang dikenal sebagai salah satu pemain terbaik sepanjang masa.
+        </p>
+
+        <!-- PRESTASI -->
+        <h2>Daftar Prestasi</h2>
+
+        <div class="club-name">Barcelona</div>
         <ul>
-            <li>sentiment analyis</li>
+            <li>La Liga: 9x</li>
+            <li>Liga Champions: 4x</li>
         </ul>
-        <li>W<sub>oS</sub></li>
-        <li>Sinta</li>
-    </ul>
+
+        <div class="club-name">Tim Nasional Argentina</div>
+        <ul>
+            <li>Piala Dunia: 2022</li>
+            <li>Copa América: 2021</li>
+        </ul>
+
+        <!-- LINK -->
+        <footer>
+            <a href="https://id.wikipedia.org/wiki/Lionel_Messi" target="_blank">Profile</a> |
+            <a href="https://www.instagram.com/leomessi/" target="_blank">Instagram</a>
+        </footer>
+
+    </div>
+
 </body>
 </html>
