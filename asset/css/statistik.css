@@ -1,24 +1,35 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
 body {
-    font-family: Arial;
-    background: linear-gradient(to bottom,#74acdf 33%,white 33%,white 66%,#74acdf 66%);
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #74acdf 0%,
+        #74acdf 33%,
+        #ffffff 33%,
+        #ffffff 66%,
+        #74acdf 66%,
+        #74acdf 100%
+    );
     text-align: center;
 }
 
+/* JUDUL */
 h1 {
-    background-color: #74acdf;
+    background-color: #1e3a8a;
     color: white;
     padding: 15px;
 }
 
-table {
-    margin: auto;
-    border-collapse: collapse;
-    background: white;
-}
-
-th, td {
-    padding: 10px;
-    border: 1px solid black;
+/* NAVBAR */
+.navbar {
+    margin: 15px 0;
 }
 
 .navbar a {
@@ -28,9 +39,67 @@ th, td {
     color: #1e3a8a;
 }
 
-button {
+.navbar a:hover {
+    border-bottom: 2px solid #1e3a8a;
+}
+
+/* FORM TAMBAH DATA */
+div {
+    background: white;
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input {
+    width: 80%;
     padding: 10px;
+    margin: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* BUTTON */
+button {
+    padding: 10px 20px;
     background-color: #74acdf;
     color: white;
     border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1e3a8a;
+}
+
+/* TABLE */
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 80%;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* HEADER TABLE */
+th {
+    background-color: #74acdf;
+    color: white;
+}
+
+/* CELL */
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+/* ROW HOVER */
+tr:hover {
+    background-color: #f1f7ff;
 }
