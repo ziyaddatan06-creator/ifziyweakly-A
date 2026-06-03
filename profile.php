@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lionel Messi | Profil</title>
 
-    <!-- LINK CSS -->
     <link rel="stylesheet" href="asset/css/profile.css">
 </head>
 
@@ -13,28 +12,32 @@
 
     <div class="container">
         
-        <!-- HEADER -->
         <header class="site-header">
             <h1 class="site-title">LIONEL MESSI</h1>
 
             <nav class="site-nav">
-                <a href="index.html">Home</a>
-                <a href="profile.html" class="active">Profile</a>
-                <a href="contact.html">Contact</a>
-                <a href="mahasiswa.html">Statistik</a>
+                <a href="index.php">Home</a>
+                <a href="profile.php" class="active">Profile</a>
+                <a href="contact.php">Contact</a>
+                <a href="mahasiswa.php">Statistik</a>
             </nav>
         </header>
 
-        <!-- FOTO -->
         <img src="images/asset/messi1.jpg" class="profile-img" alt="Lionel Messi">
 
-        <!-- BIODATA -->
         <div class="profile-details">
 
             <h2 class="section-title">Biodata Dasar</h2>
             <ul class="profile-list">
                 <li><strong>Nama Lengkap:</strong> Lionel Andrés Messi</li>
-                <li><strong>Tanggal Lahir:</strong> 24 Juni 1987</li>
+                <li><strong>Tanggal Lahir:</strong> 24 Juni 1987 
+                    <?php 
+                        $tanggal_lahir = new DateTime("1987-06-24");
+                        $hari_ini = new DateTime();
+                        $umur = $hari_ini->diff($tanggal_lahir);
+                        echo "(Umur " . $umur->y . " Tahun)";
+                    ?>
+                </li>
                 <li><strong>Tempat Lahir:</strong> Rosario, Argentina</li>
                 <li><strong>Tinggi:</strong> 170 cm</li>
                 <li><strong>Posisi:</strong> Penyerang (Forward)</li>
