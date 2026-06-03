@@ -1,38 +1,98 @@
+<?php ?>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="utf-8">
-    <title>Tambah Data Pemain</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Lionel Messi</title>
+    <link rel="stylesheet" href="asset/css/contact.css">
 </head>
 <body>
 
-<h2>Tambah Data Pemain</h2>
+<div class="container">
+    <header class="site-header">
+        <h1 class="site-title">LIONEL MESSI</h1>
 
-<form action="" method="POST">
-    Nama: <input type="text" name="nama" required><br><br>
-    Gol: <input type="number" name="gol" required><br><br>
-    Assist: <input type="number" name="assist" required><br><br>
+        <nav class="site-nav">
+            <a href="index.php">Home</a>
+            <a href="profile.php">Profile</a>
+            <a href="contact.php" class="active">Contact</a>
+            <a href="statistik.php">Statistik</a>
+        </nav>
+    </header>
 
-    <button type="submit" name="submit">Simpan</button>
-</form>
+    <main class="main-content">
+        <section class="contact-intro">
+            <h2 class="section-title">📧 Hubungi Kami</h2>
+            <p class="intro-text">
+                Kami senang mendengar dari Anda! Jika memiliki pertanyaan, saran, atau ingin berbagi pengalaman tentang Lionel Messi, 
+                silakan isi form di bawah ini.
+            </p>
+        </section>
 
-<hr>
+        <section class="contact-section">
+            <div class="contact-wrapper">
+                <form class="contact-form" action="" method="POST">
+                    <div class="form-group">
+                        <label for="nama">👤 Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required>
+                    </div>
 
-<?php
-// Mengecek apakah tombol Simpan sudah diklik
-if (isset($_POST['submit'])) {
-    // Mengambil data dari input form menggunakan method POST
-    $nama   = $_POST['nama'];
-    $gol    = $_POST['gol'];
-    $assist = $_POST['assist'];
+                    <div class="form-group">
+                        <label for="email">✉️ Email</label>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    </div>
 
-    // Menampilkan data yang berhasil ditangkap (di sini kamu bisa menggantinya dengan query SQL ke database)
-    echo "<h3>Data Pemain Berhasil Disimpan:</h3>";
-    echo "Nama Pemain: " . htmlspecialchars($nama) . "<br>";
-    echo "Jumlah Gol: " . htmlspecialchars($gol) . "<br>";
-    echo "Jumlah Assist: " . htmlspecialchars($assist) . "<br>";
-}
-?>
+                    <div class="form-group">
+                        <label for="subjek">📝 Subjek</label>
+                        <input type="text" id="subjek" name="subjek" placeholder="Judul pesan Anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesan">💬 Pesan</label>
+                        <textarea id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini..." rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" name="submit" class="submit-btn">✈️ Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+
+        <?php
+        if (isset($_POST['submit'])) {
+            $nama   = htmlspecialchars($_POST['nama']);
+            $email  = htmlspecialchars($_POST['email']);
+            $subjek = htmlspecialchars($_POST['subjek']);
+            $pesan  = htmlspecialchars($_POST['pesan']);
+        ?>
+            <section class="success-message">
+                <div class="success-box">
+                    <h3>✅ Pesan Anda Berhasil Dikirim!</h3>
+                    <p><strong>Nama:</strong> <?php echo $nama; ?></p>
+                    <p><strong>Email:</strong> <?php echo $email; ?></p>
+                    <p><strong>Subjek:</strong> <?php echo $subjek; ?></p>
+                    <p><strong>Pesan:</strong></p>
+                    <p class="message-text"><?php echo nl2br($pesan); ?></p>
+                    <p class="thanks-text">Terima kasih sudah menghubungi kami! Kami akan membalas pesan Anda segera.</p>
+                </div>
+            </section>
+        <?php } ?>
+
+        <section class="social-section">
+            <h2 class="section-title">🌐 Ikuti Kami</h2>
+            <p class="social-intro">Ikuti Lionel Messi di media sosial resmi:</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/leomessi/" target="_blank" class="social-btn">📸 Instagram</a>
+                <a href="https://www.wikipedia.org/wiki/Lionel_Messi" target="_blank" class="social-btn">📚 Wikipedia</a>
+                <a href="https://id.wikipedia.org/wiki/Lionel_Messi" target="_blank" class="social-btn">🇮🇩 Wiki Indonesia</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <?php echo date('Y'); ?> Lionel Messi Fans Page | All Rights Reserved</p>
+    </footer>
+</div>
 
 </body>
 </html>

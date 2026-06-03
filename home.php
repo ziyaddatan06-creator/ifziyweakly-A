@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Lionel Messi</title>
 
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="asset/css/home.css">
 </head>
 
 <body>
@@ -16,15 +17,17 @@
         <a href="index.php">Home</a>
         <a href="profile.php">Profile</a>
         <a href="contact.php">Contact</a>
-        <a href="mahasiswa.php">Statistik</a>
+        <a href="statistik.php">Statistik</a>
     </div>
 
     <div class="container">
-        <h2>Selamat Datang</h2>
+        <h2 class="welcome-heading">Selamat Datang</h2>
 
-        <img src="images/asset/messi1.jpg" width="400px" alt="Messi">
+        <div class="image-wrapper">
+            <img src="images/asset/messi1.jpg" alt="Messi">
+        </div>
 
-        <p>
+        <p class="intro-text">
             Selamat datang di website khusus buat kamu para fans Lionel Messi! ⚽🔥
             Di sini, kamu bisa ngulik lebih dalam tentang salah satu pemain sepak bola terbaik sepanjang masa—mulai dari perjalanan kariernya dari nol sampai jadi legenda dunia.
         </p>
@@ -34,7 +37,7 @@
         </p>
 
         <p>
-            Buat kamu yang penasaran sama gaya bermainnya, prestasinya, atau sekadar pengen tahu lebih banyak tentang Messi, tempat ini cocok banget buat jadi referensi. Bisa dibilang, ini “rumah kecil” buat semua hal tentang Messi 😄
+            Buat kamu yang penasaran sama gaya bermainnya, prestasinya, atau sekadar pengen tahu lebih banyak tentang Messi, tempat ini cocok banget buat jadi referensi. Bisa dibilang, ini "rumah kecil" buat semua hal tentang Messi 😄
         </p>
 
         <p>
@@ -46,7 +49,7 @@
         </p>
     </div>
 
-    <footer style="text-align: center; margin-top: 50px; padding: 20px; color: #555;">
+    <footer>
         <p>&copy; <?php echo date('Y'); ?> Fans Lionel Messi Indonesia</p>
     </footer>
 

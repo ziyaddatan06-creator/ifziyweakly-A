@@ -1,8 +1,6 @@
 <?php
-// 1. Memulai session untuk menyimpan data statistik sementara di server
 session_start();
 
-// 2. Inisialisasi data awal (jika session belum ada, kita buatkan data default Messi)
 if (!isset($_SESSION['data_pemain'])) {
     $_SESSION['data_pemain'] = [
         [
@@ -15,20 +13,14 @@ if (!isset($_SESSION['data_pemain'])) {
     ];
 }
 
-// 3. Logika PHP untuk menangkap data ketika form disubmit
 if (isset($_POST['tambah_data'])) {
     $nama   = $_POST['nama'];
     $gol    = $_POST['gol'];
     $assist = $_POST['assist'];
     $rating = $_POST['rating'];
 
-    // Validasi sederhana agar tidak ada input kosong
     if (!empty($nama) && $gol !== '' && $assist !== '' && $rating !== '') {
-        
-        // Menghitung nomor urut otomatis berdasarkan jumlah data saat ini + 1
         $no_baru = count($_SESSION['data_pemain']) + 1;
-
-        // Memasukkan data baru ke dalam array Session
         $_SESSION['data_pemain'][] = [
             "no" => $no_baru,
             "nama" => $nama,
@@ -36,78 +28,97 @@ if (isset($_POST['tambah_data'])) {
             "assist" => $assist,
             "rating" => $rating
         ];
-
-        // Mencegah form submitting ulang saat page di-refresh (Post/Redirect/Get pattern)
-        header("Location: mahasiswa.php");
+        header("Location: statistik.php");
         exit();
     }
 }
 
-// Fitur Tambahan (Opsional): Reset Data jika ingin mengosongkan tabel kembali ke semula
 if (isset($_GET['reset'])) {
     unset($_SESSION['data_pemain']);
-    header("Location: mahasiswa.php");
+    header("Location: statistik.php");
     exit();
 }
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Statistik Messi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistik | Lionel Messi</title>
     <link rel="stylesheet" href="asset/css/statistik.css">
 </head>
 
 <body>
 
-<h1>LIONEL MESSI</h1>
+<div class="container">
+    <header class="site-header">
+        <h1 class="site-title">LIONEL MESSI</h1>
 
-<div class="navbar">
-    <a href="index.php">Home</a>
-    <a href="profile.php">Profile</a>
-    <a href="contact.php">Contact</a>
-    <a href="mahasiswa.php">Statistik</a>
+        <nav class="site-nav">
+            <a href="index.php">Home</a>
+            <a href="profile.php">Profile</a>
+            <a href="contact.php">Contact</a>
+            <a href="statistik.php" class="active">Statistik</a>
+        </nav>
+    </header>
+
+    <section class="stats-section">
+        <h2 class="section-title">📊 Statistik Pemain</h2>
+
+        <form class="stats-form" action="" method="POST">
+            <div class="form-group">
+                <input type="text" name="nama" placeholder="Nama Pemain" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="gol" placeholder="Gol" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="assist" placeholder="Assist" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="rating" step="0.1" placeholder="Rating" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" name="tambah_data" class="btn btn-primary">➕ Tambah Data</button>
+                <a href="statistik.php?reset=1" class="btn btn-danger">🔄 Reset Tabel</a>
+            </div>
+        </form>
+    </section>
+
+    <section class="table-section">
+        <h2 class="section-title">📋 Daftar Statistik</h2>
+        <div class="table-wrapper">
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pemain</th>
+                        <th>Gol</th>
+                        <th>Assist</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($_SESSION['data_pemain'] as $pemain) : ?>
+                        <tr>
+                            <td><?php echo $pemain['no']; ?></td>
+                            <td><?php echo htmlspecialchars($pemain['nama']); ?></td>
+                            <td><?php echo $pemain['gol']; ?></td>
+                            <td><?php echo $pemain['assist']; ?></td>
+                            <td>
+                                <span class="rating-badge"><?php echo $pemain['rating']; ?>/10</span>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>&copy; <?php echo date('Y'); ?> Lionel Messi Fans Page | All Rights Reserved</p>
+    </footer>
 </div>
-
-<hr>
-
-<h2>Statistik Pemain</h2>
-
-<form action="" method="POST">
-    <input type="text" name="nama" placeholder="Nama Pemain" required><br><br>
-    <input type="number" name="gol" placeholder="Gol" required><br><br>
-    <input type="number" name="assist" placeholder="Assist" required><br><br>
-    <input type="number" name="rating" step="0.1" placeholder="Rating" required><br><br>
-
-    <button type="submit" name="tambah_data">Tambah Data</button>
-    <a href="mahasiswa.php?reset=1" style="margin-left: 10px; color: red; text-decoration: none; font-size: 0.9em;">Reset Tabel</a>
-</form>
-
-<br>
-
-<table id="tabel" border="1" style="border-collapse: collapse; width: 60%; text-align: left;">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Gol</th>
-            <th>Assist</th>
-            <th>Rating</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($_SESSION['data_pemain'] as $pemain) : ?>
-            <tr>
-                <td><?php echo $pemain['no']; ?></td>
-                <td><?php echo htmlspecialchars($pemain['nama']); ?></td>
-                <td><?php echo $pemain['gol']; ?></td>
-                <td><?php echo $pemain['assist']; ?></td>
-                <td><?php echo $pemain['rating']; ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
 
 </body>
 </html>

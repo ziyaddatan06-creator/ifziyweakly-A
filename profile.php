@@ -1,3 +1,4 @@
+<?php ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,7 +20,7 @@
                 <a href="index.php">Home</a>
                 <a href="profile.php" class="active">Profile</a>
                 <a href="contact.php">Contact</a>
-                <a href="mahasiswa.php">Statistik</a>
+                <a href="statistik.php">Statistik</a>
             </nav>
         </header>
 

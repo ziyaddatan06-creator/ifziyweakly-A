@@ -1,100 +1,362 @@
-/* RESET */
+/* ==================== RESET ==================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* ==================== BODY & BACKGROUND ==================== */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(
-        to bottom,
-        #74acdf 0%,
-        #74acdf 33%,
-        #ffffff 33%,
-        #ffffff 66%,
-        #74acdf 66%,
-        #74acdf 100%
-    );
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #74acdf 0%, #b0e0e6 50%, #ffffff 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(30, 58, 138, 0.15);
+    overflow: hidden;
+}
+
+/* ==================== HEADER & TITLE ==================== */
+.site-header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.site-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== NAVIGATION ==================== */
+.site-nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.site-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #b0e0e6;
+    transition: width 0.3s ease;
+}
+
+.site-nav a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.site-nav a:hover::after,
+.site-nav a.active::after {
+    width: 100%;
+}
+
+.site-nav a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+    padding: 40px;
+}
+
+/* ==================== SECTION TITLE ==================== */
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* ==================== CONTACT INTRO ==================== */
+.contact-intro {
+    background: linear-gradient(135deg, #f8fbff 0%, #e6f2ff 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    border-left: 5px solid #74acdf;
+}
+
+.intro-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
     text-align: center;
 }
 
-/* CONTAINER */
-.container {
-    width: 70%;
-    margin: 40px auto;
-    background: rgba(255,255,255,0.95);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+/* ==================== CONTACT SECTION ==================== */
+.contact-section {
+    margin-bottom: 40px;
 }
 
-/* TITLE */
-h1 {
-    color: #1e3a8a;
+.contact-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ==================== FORM STYLING ==================== */
+.contact-form {
+    background: linear-gradient(135deg, #f8fbff 0%, #e6f2ff 100%);
+    padding: 35px;
+    border-radius: 15px;
+    border: 2px solid #d1e7f5;
+    box-shadow: 0 5px 20px rgba(116, 172, 223, 0.1);
+}
+
+.form-group {
     margin-bottom: 20px;
 }
 
-/* FOTO */
-.profile-img {
-    width: 150px;
-    border-radius: 50%;
-    border: 4px solid #74acdf;
-    margin-bottom: 15px;
+.form-group label {
+    display: block;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* INFO */
-.info p {
-    margin: 5px;
-    font-weight: bold;
-    color: #333;
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #d1e7f5;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+    resize: vertical;
 }
 
-/* SOCIAL MEDIA */
-.social {
-    margin: 20px 0;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    transform: translateY(-2px);
 }
 
-.social a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    background: #74acdf;
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+}
+
+/* ==================== SUBMIT BUTTON ==================== */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #74acdf 0%, #5a9fcf 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(116, 172, 223, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(116, 172, 223, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* ==================== SUCCESS MESSAGE ==================== */
+.success-message {
+    margin-bottom: 40px;
+}
+
+.success-box {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 2px solid #28a745;
+    border-radius: 15px;
+    padding: 30px;
+    color: #155724;
+    box-shadow: 0 5px 20px rgba(40, 167, 69, 0.2);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.success-box h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #28a745;
+}
+
+.success-box p {
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.message-text {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 4px solid #28a745;
+}
+
+.thanks-text {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #28a745;
+}
+
+/* ==================== SOCIAL SECTION ==================== */
+.social-section {
+    background: linear-gradient(135deg, #f8fbff 0%, #e6f2ff 100%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid #d1e7f5;
+}
+
+.social-intro {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: white;
     text-decoration: none;
-    border-radius: 20px;
-    transition: 0.3s;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(30, 58, 138, 0.2);
 }
 
-.social a:hover {
-    background: #1e3a8a;
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
 }
 
-/* FORM */
-form {
-    margin-top: 20px;
-}
-
-input, textarea {
-    width: 80%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-/* BUTTON */
-button {
-    padding: 10px 20px;
-    background: #1e3a8a;
+/* ==================== FOOTER ==================== */
+.site-footer {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
     color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-button:hover {
-    background: #74acdf;
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    .container {
+        margin: 0;
+        border-radius: 10px;
+    }
+
+    .site-header {
+        padding: 30px 15px;
+    }
+
+    .site-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .site-nav {
+        gap: 15px;
+    }
+
+    .site-nav a {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+    }
+
+    .section-title {
+        font-size: 22px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .success-box {
+        padding: 20px;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .social-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .intro-text {
+        font-size: 15px;
+    }
 }
