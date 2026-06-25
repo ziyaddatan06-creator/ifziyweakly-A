@@ -59,14 +59,7 @@ if (isset($_GET['reset'])) {
             <a href="profile.php">Profile</a>
             <a href="contact.php">Contact</a>
             <a href="statistik.php" class="active">Statistik</a>
-        </nav>
-    </header>
-
-    <section class="stats-section">
-        <h2 class="section-title">📊 Statistik Pemain</h2>
-
-        <form class="stats-form" action="" method="POST">
-            <div class="form-group">
+                <a href="mahasiswa.php">Mahasiswa</a>
                 <input type="text" name="nama" placeholder="Nama Pemain" required>
             </div>
             <div class="form-group">

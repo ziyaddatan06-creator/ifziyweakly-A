@@ -21,6 +21,7 @@
                 <a href="profile.php" class="active">Profile</a>
                 <a href="contact.php">Contact</a>
                 <a href="statistik.php">Statistik</a>
+                <a href="mahasiswa.php">Mahasiswa</a>
             </nav>
         </header>
 

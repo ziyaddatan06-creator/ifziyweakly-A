@@ -18,14 +18,7 @@
             <a href="profile.php">Profile</a>
             <a href="contact.php" class="active">Contact</a>
             <a href="statistik.php">Statistik</a>
-        </nav>
-    </header>
-
-    <main class="main-content">
-        <section class="contact-intro">
-            <h2 class="section-title">📧 Hubungi Kami</h2>
-            <p class="intro-text">
-                Kami senang mendengar dari Anda! Jika memiliki pertanyaan, saran, atau ingin berbagi pengalaman tentang Lionel Messi, 
+            <a href="mahasiswa.php">Mahasiswa</a>
                 silakan isi form di bawah ini.
             </p>
         </section>
