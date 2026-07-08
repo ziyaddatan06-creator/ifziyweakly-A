@@ -149,6 +149,7 @@ if (isset($_GET['delete'])) {
         <a href="contact.php">Contact</a>
         <a href="statistik.php">Statistik</a>
         <a href="mahasiswa.php" class="active">Mahasiswa</a>
+        <a href="login.php">Login</a>
     </div>
 
     <div class="container">

@@ -59,26 +59,34 @@ if (isset($_GET['reset'])) {
             <a href="profile.php">Profile</a>
             <a href="contact.php">Contact</a>
             <a href="statistik.php" class="active">Statistik</a>
-                <a href="mahasiswa.php">Mahasiswa</a>
-                <input type="text" name="nama" placeholder="Nama Pemain" required>
-            </div>
-            <div class="form-group">
-                <input type="number" name="gol" placeholder="Gol" required>
-            </div>
-            <div class="form-group">
-                <input type="number" name="assist" placeholder="Assist" required>
-            </div>
-            <div class="form-group">
-                <input type="number" name="rating" step="0.1" placeholder="Rating" required>
-            </div>
-            <div class="form-actions">
-                <button type="submit" name="tambah_data" class="btn btn-primary">➕ Tambah Data</button>
-                <a href="statistik.php?reset=1" class="btn btn-danger">🔄 Reset Tabel</a>
-            </div>
-        </form>
-    </section>
+            <a href="mahasiswa.php">Mahasiswa</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
 
-    <section class="table-section">
+    <main>
+        <section class="stats-section">
+            <form class="stats-form" action="statistik.php" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nama" placeholder="Nama Pemain" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="gol" placeholder="Gol" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="assist" placeholder="Assist" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="rating" step="0.1" placeholder="Rating" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" name="tambah_data" class="btn btn-primary">➕ Tambah Data</button>
+                    <a href="statistik.php?reset=1" class="btn btn-danger">🔄 Reset Tabel</a>
+                </div>
+            </form>
+        </section>
+
+        <section class="table-section">
         <h2 class="section-title">📋 Daftar Statistik</h2>
         <div class="table-wrapper">
             <table class="stats-table">
@@ -107,6 +115,7 @@ if (isset($_GET['reset'])) {
             </table>
         </div>
     </section>
+</main>
 
     <footer class="site-footer">
         <p>&copy; <?php echo date('Y'); ?> Lionel Messi Fans Page | All Rights Reserved</p>

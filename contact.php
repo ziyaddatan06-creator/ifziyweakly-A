@@ -19,10 +19,11 @@
             <a href="contact.php" class="active">Contact</a>
             <a href="statistik.php">Statistik</a>
             <a href="mahasiswa.php">Mahasiswa</a>
-                silakan isi form di bawah ini.
-            </p>
-        </section>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
 
+    <main>
         <section class="contact-section">
             <div class="contact-wrapper">
                 <form class="contact-form" action="" method="POST">
