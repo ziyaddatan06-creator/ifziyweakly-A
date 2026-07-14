@@ -2,6 +2,16 @@
 session_start();
 require_once 'koneksi.php';
 
+// Jika belum ada user sama sekali di tabel `users`, arahkan ke halaman pendaftaran
+$countRes = $conn->query('SELECT COUNT(*) AS c FROM users');
+if ($countRes) {
+    $row = $countRes->fetch_assoc();
+    if (isset($row['c']) && intval($row['c']) === 0) {
+        header('Location: register.php');
+        exit;
+    }
+}
+
 $errors = '';
 $success = '';
 $loggedIn = !empty($_SESSION['logged_in']);
@@ -33,7 +43,7 @@ if (isset($_POST['login'])) {
     }
 
     $query->close();
-    $errors = 'Nama pengguna atau kata sandi salah.';
+    $errors = '<strong>Login gagal!</strong><br>Username atau password salah.<br><br><a href="register.php" style="color: #007bff; text-decoration: underline;">➜ Belum punya akun? Buat akun baru</a>';
 }
 ?>
 <!DOCTYPE html>
@@ -54,7 +64,11 @@ if (isset($_POST['login'])) {
                 <a href="contact.php">Contact</a>
                 <a href="statistik.php">Statistik</a>
                 <a href="mahasiswa.php">Mahasiswa</a>
-                <a href="login.php" class="active">Login</a>
+                <?php if (!empty($_SESSION['logged_in'])) : ?>
+                    <a href="logout.php" class="logout-btn">Logout</a>
+                <?php else : ?>
+                    <a href="login.php" class="active">Login</a>
+                <?php endif; ?>
             </nav>
         </header>
 
@@ -86,8 +100,7 @@ if (isset($_POST['login'])) {
                         </div>
                         <button type="submit" name="login" class="btn btn-login">Masuk</button>
                     </form>
-                    <p class="hint">Belum punya akun? <a href="register.php">Daftar di sini</a>.</p>
-                    <p class="hint">Contoh login: <strong>admin</strong> / <strong>admin123</strong></p>
+                    <p class="hint">Belum punya akun? <a href="register.php">Buat akun baru di sini</a>.</p>
                 <?php endif; ?>
             </section>
         </main>

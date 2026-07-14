@@ -61,8 +61,8 @@ if (isset($_POST['register'])) {
 
         <main class="main-content">
             <section class="login-card">
-                <h2>Daftar pengguna baru</h2>
-                <p class="login-intro">Buat akun untuk mengakses fitur tambahan di website.</p>
+                <h2>Buat Akun Baru</h2>
+                <p class="login-intro">Isi data di bawah untuk membuat akun Anda.</p>
 
                 <?php if ($errors) : ?>
                     <div class="alert error"><?php echo $errors; ?></div>
@@ -71,7 +71,7 @@ if (isset($_POST['register'])) {
                 <form action="register.php" method="POST" class="login-form">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="Pilih username" required>
+                        <input type="text" id="username" name="username" placeholder="Pilih username" value="<?php echo htmlspecialchars($username); ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -81,7 +81,7 @@ if (isset($_POST['register'])) {
                         <label for="confirm_password">Konfirmasi Password</label>
                         <input type="password" id="confirm_password" name="confirm_password" placeholder="Masukkan kembali password" required>
                     </div>
-                    <button type="submit" name="register" class="btn btn-login">Daftar</button>
+                    <button type="submit" name="register" class="btn btn-login">Buat Akun</button>
                 </form>
 
                 <p class="hint">Sudah punya akun? <a href="login.php">Masuk di sini</a>.</p>

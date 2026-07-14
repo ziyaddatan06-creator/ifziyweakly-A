@@ -13,7 +13,7 @@
 
 $databaseHost = 'localhost';
 $databaseUser = 'root';
-$databasePass = '';
+$databasePass = 'root';
 $databaseName = 'ifziyweekly';
 
 $conn = new mysqli($databaseHost, $databaseUser, $databasePass, $databaseName);

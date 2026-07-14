@@ -1,4 +1,10 @@
-<?php ?>
+<?php
+session_start();
+if (empty($_SESSION['logged_in'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -22,7 +28,11 @@
                 <a href="contact.php">Contact</a>
                 <a href="statistik.php">Statistik</a>
                 <a href="mahasiswa.php">Mahasiswa</a>
-                <a href="login.php">Login</a>
+                <?php if (!empty($_SESSION['logged_in'])) : ?>
+                    <a href="logout.php" class="logout-btn">Logout</a>
+                <?php else : ?>
+                    <a href="login.php">Login</a>
+                <?php endif; ?>
             </nav>
         </header>
 

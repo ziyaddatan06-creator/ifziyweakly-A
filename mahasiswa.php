@@ -39,6 +39,7 @@ $email = '';
 $no_hp = '';
 $foto = 'images/profile-placeholder.svg';
 $mode = 'tambah';
+$searchKeyword = isset($_GET['search']) ? trim($_GET['search']) : '';
 
 if (isset($_GET['msg'])) {
     $message = htmlspecialchars($_GET['msg']);
@@ -149,7 +150,11 @@ if (isset($_GET['delete'])) {
         <a href="contact.php">Contact</a>
         <a href="statistik.php">Statistik</a>
         <a href="mahasiswa.php" class="active">Mahasiswa</a>
-        <a href="login.php">Login</a>
+        <?php if (!empty($_SESSION['logged_in'])) : ?>
+            <a href="logout.php" class="logout-btn">Logout</a>
+        <?php else : ?>
+            <a href="login.php">Login</a>
+        <?php endif; ?>
     </div>
 
     <div class="container">
@@ -206,6 +211,20 @@ if (isset($_GET['delete'])) {
 
         <section class="student-table-section">
             <h3>Daftar Mahasiswa</h3>
+            
+            <div style="margin-bottom: 20px; display: flex; gap: 10px;">
+                <form action="mahasiswa.php" method="GET" style="display: flex; gap: 10px; width: 100%;">
+                    <input type="text" name="search" placeholder="Cari nama, NIM, email, atau jurusan..." value="<?php echo htmlspecialchars($searchKeyword); ?>" style="flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px;">
+                    <button type="submit" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Cari</button>
+                    <?php if ($searchKeyword) : ?>
+                        <a href="mahasiswa.php" style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; font-size: 14px; display: flex; align-items: center;">Hapus Filter</a>
+                    <?php endif; ?>
+                </form>
+            </div>
+            
+            <?php if ($searchKeyword) : ?>
+                <p style="color: #666; margin-bottom: 15px;">Hasil pencarian untuk: <strong><?php echo htmlspecialchars($searchKeyword); ?></strong></p>
+            <?php endif; ?>
             <table class="student-table">
                 <thead>
                     <tr>
@@ -220,12 +239,28 @@ if (isset($_GET['delete'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (count($_SESSION['daftar_mahasiswa']) === 0) : ?>
+                    <?php 
+                    // Filter data berdasarkan keyword pencarian
+                    $dataDisplay = $_SESSION['daftar_mahasiswa'];
+                    $displayIndices = range(0, count($dataDisplay) - 1);
+                    
+                    if ($searchKeyword) {
+                        $filtered = array_filter($dataDisplay, function($mahasiswa) use ($searchKeyword) {
+                            return stripos($mahasiswa['nama'], $searchKeyword) !== false ||
+                                   stripos($mahasiswa['nim'], $searchKeyword) !== false ||
+                                   stripos($mahasiswa['email'] ?? '', $searchKeyword) !== false ||
+                                   stripos($mahasiswa['jurusan'] ?? '', $searchKeyword) !== false;
+                        }, ARRAY_FILTER_USE_BOTH);
+                        $dataDisplay = $filtered;
+                        $displayIndices = array_keys($filtered);
+                    }
+                    ?>
+                    <?php if (count($dataDisplay) === 0) : ?>
                         <tr>
-                            <td colspan="8">Data mahasiswa masih kosong.</td>
+                            <td colspan="8"><?php echo $searchKeyword ? 'Tidak ada hasil pencarian.' : 'Data mahasiswa masih kosong.'; ?></td>
                         </tr>
                     <?php else : ?>
-                        <?php foreach ($_SESSION['daftar_mahasiswa'] as $index => $mahasiswa) : ?>
+                        <?php foreach ($dataDisplay as $actualIndex => $mahasiswa) : ?>
                             <?php
                                 $fotoMahasiswa = !empty($mahasiswa['foto']) ? $mahasiswa['foto'] : 'images/profile-placeholder.svg';
                                 $jurusanMahasiswa = $mahasiswa['jurusan'] ?? $mahasiswa['prodi'] ?? '-';
@@ -233,7 +268,7 @@ if (isset($_GET['delete'])) {
                                 $noHpMahasiswa = $mahasiswa['no_hp'] ?? '-';
                             ?>
                             <tr>
-                                <td><?php echo $index + 1; ?></td>
+                                <td><?php echo array_search($actualIndex, $displayIndices) + 1; ?></td>
                                 <td><img src="<?php echo htmlspecialchars($fotoMahasiswa); ?>" alt="Foto <?php echo htmlspecialchars($mahasiswa['nama']); ?>" class="student-photo"></td>
                                 <td><?php echo htmlspecialchars($mahasiswa['nama']); ?></td>
                                 <td><?php echo htmlspecialchars($mahasiswa['nim']); ?></td>
@@ -241,8 +276,8 @@ if (isset($_GET['delete'])) {
                                 <td><?php echo htmlspecialchars($emailMahasiswa); ?></td>
                                 <td><?php echo htmlspecialchars($noHpMahasiswa); ?></td>
                                 <td>
-                                    <a href="mahasiswa.php?edit=<?php echo $index; ?>" class="btn btn-edit">Edit</a>
-                                    <a href="mahasiswa.php?delete=<?php echo $index; ?>" class="btn btn-delete" onclick="return confirm('Hapus data mahasiswa ini?');">Hapus</a>
+                                    <a href="mahasiswa.php?edit=<?php echo $actualIndex; ?>" class="btn btn-edit">Edit</a>
+                                    <a href="mahasiswa.php?delete=<?php echo $actualIndex; ?>" class="btn btn-delete" onclick="return confirm('Hapus data mahasiswa ini?');">Hapus</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

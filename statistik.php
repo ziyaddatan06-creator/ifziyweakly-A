@@ -60,7 +60,11 @@ if (isset($_GET['reset'])) {
             <a href="contact.php">Contact</a>
             <a href="statistik.php" class="active">Statistik</a>
             <a href="mahasiswa.php">Mahasiswa</a>
-            <a href="login.php">Login</a>
+            <?php if (!empty($_SESSION['logged_in'])) : ?>
+                <a href="logout.php" class="logout-btn">Logout</a>
+            <?php else : ?>
+                <a href="login.php">Login</a>
+            <?php endif; ?>
         </nav>
     </header>
 

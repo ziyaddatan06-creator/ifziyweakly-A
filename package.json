@@ -1,0 +1,19 @@
+{
+  "name": "ifziyweekly",
+  "version": "1.0.0",
+  "description": "ifZIY Weekly - Aplikasi Manajemen Mahasiswa",
+  "main": "index.php",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "build": "echo 'Build script not required for PHP'",
+    "test": "echo 'Test script not configured'"
+  },
+  "keywords": [
+    "php",
+    "mahasiswa",
+    "management"
+  ],
+  "author": "",
+  "license": "ISC"
+}
